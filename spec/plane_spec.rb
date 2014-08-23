@@ -6,14 +6,22 @@ describe Plane do
 	
 	context "knows what is flying" do
 
-		it "knows when is on the air" do
-			expect(plane.is_flying?).to be true
+		it "is initialized flying" do
+			expect(plane.flying).to be true
+		end
+		
+		it "knows that can land" do
+			plane.landing!
+
+			expect(plane.flying).to be false
 		end
 
-		it "knows when is landed" do
-			plane.landed!
+		it "knows that can take off" do
+			plane.landing!
 
-			expect(plane.is_flying?).to be false
+			plane.taking_off!	
+
+			expect(plane.flying).to be true
 		end
 	end
 
