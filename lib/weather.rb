@@ -4,7 +4,9 @@ module Weather
 
 	weather = ['sunny','stormy']
 
-	weather
+	forecast = weather.sample
+
+	forecast
 
 	end
 
