@@ -12,7 +12,13 @@ describe Weather do
 
 	let(:airport)  { Airport.new }
 
-	it "only accepts values of stormy or sunny" do
+	it "can be stormy or sunny" do
 		expect(airport.weather_conditions).to match(/sunny|stormy/)
+	end
+
+	it "generates a random value of sunny or stormy" do
+		forecast = ["sunny","stormy"]
+
+	  expect(forecast).to contain_exactly("sunny", "stormy")
 	end
 end

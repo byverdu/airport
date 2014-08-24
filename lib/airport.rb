@@ -19,44 +19,40 @@ class Airport
 	end
 
 	def track_to_land plane
-	
 		raise 'The Airport is full' if is_full?
 		raise_bad_weather
 
 		plane.land!
 		@hangar << plane
-		
 	end
-
-
 
 	def track_to_take_off plane
 		raise_bad_weather
 
-		@hangar.delete(plane)
 		plane.take_off!
+		@hangar.delete(plane)
 	end
 
 	def is_full?
-		@hangar.length == CAPACITY
+		@hangar.count == CAPACITY
 	end
 
-
-
-			#raise 'The Airport is full' if @hangar.length == CAPACITY
-
-
-	# # def count_planes
-	# # 	@hangar.count
-	# # end
-
-	# def receiving_a plane
-	# 	@hangar << plane
-	# 	plane.landing!
-	# end
-
-	# # def taking_off plane
-	# # 	true
-	# # end
-
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
