@@ -1,6 +1,6 @@
 module Weather
 
-	def weather_conditons
+	def weather_conditions
 
 	weather = ['sunny','stormy']
 

@@ -1,3 +1,10 @@
+# A plane currently in the airport can be requested to take off.
+#
+# No more planes can be added to the airport, if it's full.
+# It is up to you how many planes can land in the airport and how that is impermented.
+#
+# If the airport is full then no planes can land
+
 require "./lib/airport"
 
 describe Airport do
@@ -9,45 +16,60 @@ describe Airport do
 	let(:airport)  { Airport.new   }
 	let(:plane)    { double :plane }
 
-	it "is able to store planes" do
-		expect(airport.hangar).to eq []
+	context 'taking off and landing' do
+		
+		it "is able to store planes" do
+			expect(airport.hangar).to eq []
+		end
+
+		it "has a default capacity" do
+			expect(airport.capacity).to eq 20
+		end
+
+		it "a plane can land on the airport" do
+			expect(plane).to receive(:land!)
+
+			airport.track_to_land(plane)
+
+			expect(airport.hangar.length).to eq 1
+		end
+
+		it "a plane can take off" do
+			expect(plane).to receive(:land!)
+			expect(plane).to receive(:take_off!)
+
+			airport.track_to_land plane
+
+			airport.track_to_take_off plane
+
+			expect(airport.hangar.length).to eq 0
+		end
 	end
 
-	it "has a default capacity" do
-		expect(airport.capacity).to eq 20
+
+	context 'traffic control' do
+		
+		it "knows when is full" do
+			fill_hangar(airport)
+
+			expect(airport).to respond_to(:is_full?)
+
+			expect(airport.hangar.length).to eq 20
+		end
+
+		it "can not receive a plane if is full" do
+			fill_hangar(airport)
+
+			expect{airport.track_to_land(plane)}.to raise_error(RuntimeError)
+		end
 	end
 
-	it "a plane can land on the airport" do
-		expect(plane).to receive(:land!)
 
-		airport.track_to_land(plane)
+	context 'weather conditions' do
 
-		expect(airport.hangar.length).to eq 1
-	end
+		
 
-	it "a plane can take off" do
-		expect(plane).to receive(:land!)
-		expect(plane).to receive(:take_off!)
-
-		airport.track_to_land plane
-
-		airport.track_to_take_off plane
-
-		expect(airport.hangar.length).to eq 0
-	end
-
-	it "knows when is full" do
-		fill_hangar(airport)
-
-		expect(airport).to respond_to(:is_full?)
-
-		expect(airport.hangar.length).to eq 20
-	end
-
-	it "can not receive a plane if is full" do
-		fill_hangar(airport)
-
-		expect{airport.track_to_land(plane)}.to raise_error(RuntimeError)
+		
 	end
 
 end
