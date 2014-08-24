@@ -14,10 +14,14 @@ class Airport
 		@capacity = CAPACITY
 	end
 
+	def raise_bad_weather
+		raise 'Bad weather' if weather_conditions == 'stormy'
+	end
+
 	def track_to_land plane
 	
 		raise 'The Airport is full' if is_full?
-		raise 'Bad weather' if self.weather_conditions == 'stormy'
+		raise_bad_weather
 
 		plane.land!
 		@hangar << plane
@@ -25,7 +29,10 @@ class Airport
 	end
 
 
+
 	def track_to_take_off plane
+		raise_bad_weather
+
 		@hangar.delete(plane)
 		plane.take_off!
 	end

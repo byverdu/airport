@@ -79,14 +79,13 @@ describe Airport do
 			expect{ airport.track_to_land(plane) }.to raise_error(RuntimeError)
 		end
 
-		
+		it "a plane can not take off if the weather is stormy" do
+			allow(airport).to receive(:weather_conditions).and_return('stormy')
+			allow(plane).to receive(:take_off!)
 
-
-		
-
-		
+			expect{airport.track_to_take_off(plane)}.to raise_error(RuntimeError)
+		end
 	end
-
 end
 
 
