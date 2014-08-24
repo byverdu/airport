@@ -1,5 +1,4 @@
-require "airport"
-
+require "./lib/airport"
 
 describe Airport do
 
