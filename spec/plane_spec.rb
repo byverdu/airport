@@ -17,14 +17,15 @@ describe Plane do
 		expect(plane).to respond_to(:take_off!)
 	end
 
+	it "changes his status (flying to landed) once is landed" do
+		plane.land!
+		expect(plane.status).to eq 'landed'
+	end
+
 	it "changes its status to flying after taking of" do
 		plane.land!
 		plane.take_off!
 		expect(plane.status).to eq 'flying'
 	end
 
-	it "changes his status (flying to landed) once is landed" do
-		plane.land!
-		expect(plane.status).to eq 'landed'
-	end
 end
