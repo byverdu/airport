@@ -15,10 +15,15 @@ class Airport
 	end
 
 	def track_to_land plane
+	
 		raise 'The Airport is full' if is_full?
+		raise 'Bad weather' if self.weather_conditions == 'stormy'
+
 		plane.land!
 		@hangar << plane
+		
 	end
+
 
 	def track_to_take_off plane
 		@hangar.delete(plane)

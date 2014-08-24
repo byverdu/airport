@@ -1,13 +1,6 @@
 module Weather
 
 	def weather_conditions
-
-	weather = ['sunny','stormy']
-
-	forecast = weather.sample
-
-	forecast
-
+		['sunny','stormy'].sample
 	end
-
 end
