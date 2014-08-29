@@ -21,14 +21,14 @@ describe "the grand finale" do
 		plane_4 = Plane.new
 		plane_5 = Plane.new
 
-		planes = [] << plane_0 << plane_1 << plane_2 << plane_3 << plane_4 << plane_5
+		planes = [plane_0, plane_1, plane_2, plane_3, plane_4,plane_5]
 
 		# Testing bad weather
 
 		allow(airport).to receive(:weather_conditions).and_return("stormy")
 
 		planes.each do |plane| 
-			expect{airport.track_to_land(plane).to raise_error}
+			expect{airport.track_to_land(plane).to raise_error 'Bad weather'}
 		end
 
 		#Testing good weather

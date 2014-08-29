@@ -21,16 +21,14 @@ class Airport
 	def track_to_land plane
 		raise 'The Airport is full' if is_full?
 		raise_bad_weather
-
-		plane.land!
 		@hangar << plane
+		plane.land!	
 	end
 
 	def track_to_take_off plane
 		raise_bad_weather
-
+		@hangar.pop
 		plane.take_off!
-		@hangar.delete(plane)
 	end
 
 	def is_full?
