@@ -32,6 +32,18 @@ A plane currently in the airport can be requested to take off.
  Check when all the planes have landed that they have the right status "landed"
  Once all the planes are in the air again, check that they have the status of flying!
 
+## Objectives
+
+1. Interaction between classes.
+2. Usage of TDD
+
+
+## Technologies used
+
+1. Ruby
+2. RSpec
+
+
 ## How to run the test
 
 1. `> clone https://github.com/byverdu/airport.git`
