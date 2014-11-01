@@ -1,7 +1,6 @@
- Airport
-=========
+ # Airport
 
-Third Challenge at makers Academy, airport.
+## Intro
 
 A plane currently in the airport can be requested to take off.
 
